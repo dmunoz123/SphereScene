@@ -9,7 +9,8 @@ export default defineConfig({
     port: 5173,
     proxy: {
       "/api": {
-        target: "http://127.0.0.1:5000",
+        target:
+          "https://3b66f11f-5ac2-4200-974b-db06f6b6af14-00-2rki8cl3adao7.worf.replit.dev",
         changeOrigin: true,
         secure: false,
       },
