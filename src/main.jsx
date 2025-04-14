@@ -1,9 +1,14 @@
 import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { Canvas, useThree } from "@react-three/fiber";
-import { OrbitControls, PerspectiveCamera, Bvh, Environment } from "@react-three/drei";
+import {
+  OrbitControls,
+  PerspectiveCamera,
+  Bvh,
+  Environment,
+} from "@react-three/drei";
 import { useControls } from "leva";
-import "./index.css";
+import "./Index.css";
 import WobblySphere from "./WobblySphere.jsx";
 
 function ResponsiveCamera() {
@@ -42,7 +47,7 @@ export default function App() {
             position={[0.0, 3.0, 5.0]}
             castShadow
           />
-          <OrbitControls enableDamping/>
+          <OrbitControls enableDamping />
           <WobblySphere />
         </Bvh>
       </Canvas>
