@@ -42,33 +42,61 @@ export default function App() {
   };
 
   return (
-    <>
-      <div className="canvas-container">
-        <Canvas shadows>
-          <Environment preset="night" background />
-          <Bvh>
-            <ResponsiveCamera />
-            <PerspectiveCamera
-              makeDefault
-              fov={45}
-              near={0.1}
-              far={100}
-              position={[5, 2, 9]}
-            />
-            <directionalLight
-              // Pass the Leva-controlled values into the light's args.
-              args={[lightColor, lightIntensity]}
-              position={[0.0, 3.0, 5.0]}
-              castShadow
-            />
-            <OrbitControls enableDamping />
-            <WobblySphere />
-          </Bvh>
-        </Canvas>
-      </div>
+    // Wrap the Canvas in a div with "position: relative"
+    <div className="canvas-container" style={{ position: "relative" }}>
+      <Canvas shadows>
+        <Environment preset="night" background />
+        <Bvh>
+          <ResponsiveCamera />
+          <PerspectiveCamera
+            makeDefault
+            fov={45}
+            near={0.1}
+            far={100}
+            position={[5, 2, 9]}
+          />
+          <directionalLight
+            // Pass the Leva-controlled values into the light's args.
+            args={[lightColor, lightIntensity]}
+            position={[0.0, 3.0, 5.0]}
+            castShadow
+          />
+          <OrbitControls enableDamping />
+          <WobblySphere />
+        </Bvh>
+      </Canvas>
 
-      <div style={{ marginTop: 20, textAlign: "center" }}>
-        <button onClick={runModel} style={{ padding: 10, fontSize: "16px" }}>
+      {/* Floating overlay for predictions */}
+      <div
+        className="prediction-overlay"
+        style={{
+          position: "absolute",
+          bottom: "20px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          maxHeight: "40%",
+          width: "50%",
+          overflowY: "auto",
+          padding: "20px",
+          borderRadius: "8px",
+          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.3)",
+          textAlign: "center", // centers all content inside
+        }}
+      >
+        <button
+          onClick={runModel}
+          style={{
+            padding: "10px 20px",
+            fontSize: "16px",
+            backgroundColor: "#007bff", // Blue background
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px", // Rounded corners
+            cursor: "pointer",
+            marginBottom: "20px",
+          }}
+        >
           Run AutoGluon Prediction
         </button>
 
@@ -126,8 +154,9 @@ export default function App() {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
+
 }
 
 createRoot(document.getElementById("root")).render(

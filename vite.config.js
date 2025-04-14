@@ -13,7 +13,7 @@ export default defineConfig({
     proxy: {
       "/api": {
         target:
-          ipad,
+          pc,
         changeOrigin: true,
         secure: false,
       },
