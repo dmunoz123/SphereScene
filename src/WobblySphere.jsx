@@ -187,10 +187,7 @@ export default function WobblySphere() {
     if (!isActive) {
       // Start sniffing and activate visual mode
       try {
-        await fetch(
-          "http://daniel-aws-s3-mks-myawstestbucket.s3-website-us-west-1.amazonaws.com/api/start-sniffing"
-        );
-
+        await fetch("/api/start-sniffing");
         setIsActive(true);
       } catch (err) {
         console.error("Error starting sniffing:", err);
@@ -198,9 +195,7 @@ export default function WobblySphere() {
     } else {
       // Stop sniffing and return to static (off) mode
       try {
-        await fetch(
-          "http://daniel-aws-s3-mks-myawstestbucket.s3-website-us-west-1.amazonaws.com/api/stop-sniffing"
-        );
+        await fetch("/api/stop-sniffing");
         setIsActive(false);
       } catch (err) {
         console.error("Error stopping sniffing:", err);
